@@ -2,9 +2,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Transaction {
+	// Private static instance
+	private static Transaction transaction;
+	
+	private Transaction() {}
+	
+	// Public accessor method
+	public static Transaction getTransaction() {
+		if (transaction == null) {
+			transation = new Transaction();
+		}
+		return transaction;
+	}
 
     // Perform the borrowing of a book
-    public static boolean borrowBook(Book book, Member member) {
+    public boolean borrowBook(Book book, Member member) {
         if (book.isAvailable()) {
             book.borrowBook();
             member.borrowBook(book); 
@@ -18,7 +30,7 @@ public class Transaction {
     }
 
     // Perform the returning of a book
-    public static void returnBook(Book book, Member member) {
+    public void returnBook(Book book, Member member) {
         if (member.getBorrowedBooks().contains(book)) {
             member.returnBook(book);
             book.returnBook();
