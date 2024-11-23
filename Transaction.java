@@ -10,7 +10,7 @@ public class Transaction {
 	// Public accessor method
 	public static Transaction getTransaction() {
 		if (transaction == null) {
-			transation = new Transaction();
+			transaction = new Transaction();
 		}
 		return transaction;
 	}
@@ -39,6 +39,9 @@ public class Transaction {
         } else {
             System.out.println("This book was not borrowed by the member.");
         }
+    }
+    public void displayTransactionHistory() {
+    	
     }
 
     // Get the current date and time in a readable format
