@@ -1,4 +1,7 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -46,7 +49,18 @@ public class Transaction {
         }
     }
     public void displayTransactionHistory() {
-    	
+    	try {
+			BufferedReader reader = new BufferedReader(new FileReader("transactions.txt"));
+			try {
+				System.out.println(reader.readLine());
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+    
     }
 
     // Get the current date and time in a readable format
