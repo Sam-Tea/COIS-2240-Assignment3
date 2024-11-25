@@ -7,7 +7,17 @@ public class Library {
 
     // Add a new member to the library
     public void addMember(Member member) {
-        members.add(member);
+        if (members.isEmpty() == false) {
+        	for (int i = 0; i <= (members.size() - 1); i++){
+        		if ( members.get(i).getId() == member.getId() ){
+        			System.out.println("Sorry, this member ID already exists.");
+        		}
+    		}
+        }
+        else {
+			members.add(member);
+			System.out.println("Member added to library successfully");
+    	}
     }
     
     // Add a new book to the library

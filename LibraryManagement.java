@@ -38,7 +38,6 @@ public class LibraryManagement {
 
                     Member newMember = new Member(id, name);
                     library.addMember(newMember);
-                    System.out.println("Member added successfully.");
                     break;
                 case 2:
                     System.out.print("Enter book ID: ");
