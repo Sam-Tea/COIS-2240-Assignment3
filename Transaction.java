@@ -48,6 +48,8 @@ public class Transaction {
             System.out.println("This book was not borrowed by the member.");
         }
     }
+    
+    // Read from the transactions text file
     public void displayTransactionHistory() {
     	try {
 			BufferedReader reader = new BufferedReader(new FileReader("transactions.txt"));
@@ -68,10 +70,13 @@ public class Transaction {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date());
     }
+    
+    // Write to the transactions text file
     public void saveTransaction(String transactionDetails) {
     	try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt"));
 			writer.write(transactionDetails);
+			writer.write("\n");
 			writer.close();
 		} catch (IOException e) {
 			// Auto-generated catch block
