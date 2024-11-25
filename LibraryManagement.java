@@ -50,7 +50,6 @@ public class LibraryManagement {
 
                     Book newBook = new Book(id, title);
                     library.addBook(newBook);
-                    System.out.println("Book added to library successfully.");
                     break;
                 case 3:
                 	System.out.println("\n--- Available Members ---");
@@ -126,5 +125,6 @@ public class LibraryManagement {
                     System.out.println("Invalid choice! Please try again.");
             }
         }
+        scanner.close();
     }
 }

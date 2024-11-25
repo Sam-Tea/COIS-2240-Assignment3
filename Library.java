@@ -11,8 +11,22 @@ public class Library {
     }
     
     // Add a new book to the library
-    public void addBook(Book book) {
-        books.add(book);
+    public void addBook(Book book) 
+    {
+    	// Checks that list of books is not empty, then that there 
+    	// is not a duplicate book ID.
+    	if ( books.isEmpty() == false ) {
+    		for (int i = 0; i <= (books.size() - 1); i++){
+        		if ( books.get(i).getId() == book.getId() ){
+        			System.out.println("Sorry, this book ID already exists.");
+        		}
+    		}
+    	}
+    	else
+		{
+			books.add(book);
+			System.out.println("Book added to library successfully");
+    	}
     }
 
     // Find a member by ID
