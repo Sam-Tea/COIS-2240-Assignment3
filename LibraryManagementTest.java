@@ -21,4 +21,33 @@ public class LibraryManagementTest {
 			System.out.println("Invalid ID");
 		}
 	}
+	
+	@Test
+	public void testBorrowReturn() {
+		try {
+			Book book1 = new Book(100, "book 1");
+			Member member1 = new Member(100, "Member 1");
+			
+			// Testing to see if book is available
+			assertTrue(book1.isAvailable());
+			
+			// Testing to see if borrow was successful
+			assertTrue(Transaction.getTransaction().borrowBook(book1, member1));
+			
+			// Testing to see if book is now unavailable
+			assertFalse(book1.isAvailable());
+			
+			// Testing to see if borrow was successful
+			assertFalse(Transaction.getTransaction().borrowBook(book1, member1));
+			
+			// Testing to see if return was successful
+			assertTrue(Transaction.getTransaction().returnBook(book1, member1));
+			
+			// Testing to see if return was unsuccessful
+			assertFalse(Transaction.getTransaction().returnBook(book1, member1));
+		}
+		catch (Exception e) {
+		}
+	}
+
 }
