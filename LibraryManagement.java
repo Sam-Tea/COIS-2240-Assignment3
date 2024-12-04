@@ -46,9 +46,13 @@ public class LibraryManagement {
                     String title = scanner.next();
                     
                     scanner.nextLine();
-
-                    Book newBook = new Book(id, title);
-                    library.addBook(newBook);
+                    try {
+                    	Book newBook = new Book(id, title);
+                        library.addBook(newBook);
+                    }
+                    catch (Exception e) {
+						System.out.println("Error: invalid ID");
+					}
                     break;
                 case 3:
                 	System.out.println("\n--- Available Members ---");

@@ -37,15 +37,17 @@ public class Transaction {
     }
 
     // Perform the returning of a book
-    public void returnBook(Book book, Member member) {
+    public boolean returnBook(Book book, Member member) {
         if (member.getBorrowedBooks().contains(book)) {
             member.returnBook(book);
             book.returnBook();
             String transactionDetails = getCurrentDateTime() + " - Returning: " + member.getName() + " returned " + book.getTitle();
             System.out.println(transactionDetails);
             saveTransaction(member.getName() + " returned the book titled: " + book.getTitle() + "\n");
+            return true;
         } else {
             System.out.println("This book was not borrowed by the member.");
+            return false;
         }
     }
     
@@ -74,9 +76,8 @@ public class Transaction {
     // Write to the transactions text file
     public void saveTransaction(String transactionDetails) {
     	try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt",true));
 			writer.write(transactionDetails);
-			writer.write("\n");
 			writer.close();
 		} catch (IOException e) {
 			// Auto-generated catch block

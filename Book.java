@@ -3,10 +3,15 @@ public class Book {
     private String title;
     private boolean available;
 
-    public Book(int id, String title) {
-        this.id = id;
-        this.title = title;
-        this.available = true;
+    // Constructor 
+    public Book(int id, String title) throws Exception {
+    	if (isValidId(id))
+    	{
+    		this.id = id;
+    		this.title = title;
+    		this.available = true;
+    	}
+    	else {throw new Exception("Invalid ID");}
     }
 
     // Getter methods
